@@ -1,7 +1,11 @@
 aid: ann
-url: https://raw.githubusercontent.com/api-evangelist/ann/refs/heads/main/apis.yml
+url: 
+  https://raw.githubusercontent.com/api-evangelist/ann/refs/heads/main/apis.yml
 modified: '2026-03-23'
 apis: []
 common:
   - type: Website
     url: https://www.ann.com
+description: >-
+  Ann Inc. is a specialty retailer of women's apparel, shoes, and accessories operating
+  under the Ann Taylor, LOFT, and Lou & Grey brands.
