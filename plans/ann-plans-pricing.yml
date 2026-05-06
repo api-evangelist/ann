@@ -4,146 +4,65 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: ANN Inc.
 providerId: ann
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
-  - Ann Taylor
-  - Fashion
-  - KnitWell
-  - LOFT
-  - Lou And Grey
+  - Affiliate Marketing
   - Retail
-  - Sycamore Partners
-  - Women's Apparel
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
+  - Fashion
+description: >-
+  ANN Inc. (Ann Taylor / LOFT, now under Sycamore Partners) does not publish a
+  first-party developer API. Its public "API" surface is the Ann Taylor
+  affiliate program operated through third-party networks (FlexOffers, CJ
+  Affiliate). Compensation is a sales commission paid by Ann Taylor through
+  the network, not a per-request API fee. There is no plan tier, free quota,
+  or metered request price published by Ann Taylor itself.
+notes: >-
+  No first-party developer API. Affiliate commission rates are not publicly
+  posted by Ann Taylor; publishers see them after joining the network. If ANN
+  publishes commission tiers publicly, replace this scaffold with reconciled
+  values.
+sources:
+  - https://www.flexoffers.com/affiliate-programs/ann-taylor-affiliate-program/
+  - https://www.anntaylor.com
 plans:
-  - id: ann-free
-    name: Free
-    type: freemium
-    description: Free entry tier for the ANN Inc. API surface. Intended for evaluation, prototyping, and
-      low-volume integrations. Real limits and pricing must be reconciled with the provider's published
-      plan documentation.
+  - id: ann-affiliate-program
+    name: Ann Taylor Affiliate Program
+    type: usage-based
+    description: >-
+      Affiliate program operated via FlexOffers and CJ Affiliate. Publishers
+      earn a sales commission on completed orders attributed via affiliate
+      links. The exact commission percentage is disclosed inside the network
+      after approval and is not publicly listed.
     entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 1000
-        timeFrame: month
-        geo: global
-        domains:
-          - https://www.anntaylor.com
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://www.anntaylor.com
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-    elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: Ann Taylor Affiliate Program
-  - id: ann-pro
-    name: Professional
-    type: paid
-    description: Production tier for ANN Inc.. Provides higher quotas, priority support, and access to
-      the broader API portfolio. Pricing placeholder; align with the provider's pricing page.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 100000
-        timeFrame: month
-        geo: global
-        domains:
-          - https://www.anntaylor.com
-        unit: 1
-        price: TBD
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 100
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://www.anntaylor.com
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
+      - label: Sales Commission
+        description: Percentage of attributed sale value paid as commission via the affiliate network
+        name: sales_commission
         type: metered
-        metric: requests
+        metric: transaction
         limit: -1
-        timeFrame: month
-        geo: global
-        domains:
-          - https://www.anntaylor.com
-        unit: 1000
-        price: TBD
+        timeFrame: usage
+        geo: US
+        unit: 1
+        price: 'see network (FlexOffers / CJ); not publicly disclosed'
+        userMultiplied: false
+      - label: Cookie Window
+        description: Attribution window for affiliate referrals
+        name: cookie_window
+        type: flat
+        metric: varies
+        limit: -1
+        timeFrame: usage
+        geo: US
+        unit: 1
+        price: 'see network'
         userMultiplied: false
     elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
-      - name: Ann Taylor Affiliate Program
-  - id: ann-enterprise
-    name: Enterprise
-    type: enterprise
-    description: Custom-negotiated tier for ANN Inc.. Includes dedicated capacity, contractual SLAs, security
-      review, data residency options, and named technical account management.
-    entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: configurable
-        domains:
-          - https://www.anntaylor.com
-        unit: 1
-        price: custom
-        userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains:
-          - https://www.anntaylor.com
-        unit: 1
-        price: custom
-        userMultiplied: false
-    elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
-      - name: Ann Taylor Affiliate Program
-maintainers: []
+      - name: Affiliate Link Generator (network-provided)
+      - name: Product Catalog Feed (network-provided)
+      - name: Commission Reporting (network-provided)
+      - name: FlexOffers Network Membership
+      - name: CJ Affiliate Network Membership (alternative)
+maintainers:
+  - FN: API Evangelist
+    email: info@apievangelist.com

@@ -1,5 +1,6 @@
 specification: FinOps Framework
 specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
 alignedWith:
   framework: FinOps Foundation Framework
   frameworkUrl: https://www.finops.org/framework/
@@ -8,127 +9,81 @@ alignedWith:
   dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
 provider: ANN Inc.
 providerId: ann
-publisherName: ANN Inc.
-serviceCategory: API
+publisherName: Ann Taylor (operated by Sycamore Partners portfolio companies)
+serviceCategory: Affiliate Marketing
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
-  - Ann Taylor
-  - Fashion
-  - KnitWell
-  - LOFT
-  - Lou And Grey
-  - Retail
-  - Sycamore Partners
-  - Women's Apparel
   - FinOps
-  - Cost Management
   - FOCUS
-description: FinOps framework definition for the ANN Inc. API surface. Provides a FOCUS-aligned mapping
-  for cost allocation, usage measurement, and unit-economics reporting across the provider's APIs.
-principles:
-  - name: Visibility
-    description: Make API consumption costs visible to engineering, product, and finance teams in near
-      real-time.
-  - name: Allocation
-    description: Tag every chargeable API call with the consuming team, environment, application, and
-      feature so cost can be allocated.
-  - name: Optimization
-    description: Continuously evaluate request patterns, caching, batching, and tier selection to reduce
-      cost per useful unit of work.
-  - name: Accountability
-    description: Establish budget owners and chargeback or showback flows for each consuming team.
-domains:
-  - name: Understand Usage and Cost
-    capabilities:
-      - Data Ingestion
-      - Allocation
-      - Reporting and Analytics
-      - Anomaly Management
-  - name: Quantify Business Value
-    capabilities:
-      - Planning and Estimating
-      - Forecasting
-      - Budgeting
-      - Benchmarking
-      - Unit Economics
-  - name: Optimize Usage and Cost
-    capabilities:
-      - Architecting for Cloud
-      - Rate Optimization
-      - Workload Optimization
-      - Cloud Sustainability
-      - Licensing and SaaS
-  - name: Manage the FinOps Practice
-    capabilities:
-      - FinOps Practice Operations
-      - FinOps Education and Enablement
-      - Invoicing and Chargeback
-      - Onboarding Workloads
-      - Intersecting Disciplines
+  - Affiliate Marketing
+  - Retail
+description: >-
+  FOCUS-aligned FinOps placeholder for Ann Taylor's affiliate program. The
+  cash flow is reverse-direction (publisher earns commission, not pays a
+  fee); the publisher's FinOps cost surface is the affiliate-network platform
+  fee plus revenue-share, not Ann Taylor's API.
+notes: >-
+  Affiliate revenue is not an API charge category in the conventional FinOps
+  sense; it is a marketing channel commission settled via FlexOffers / CJ.
+sources:
+  - https://www.flexoffers.com/affiliate-programs/ann-taylor-affiliate-program/
 billingModel:
-  pricingCategory: Usage-Based
+  pricingCategory: Take Rate
   billingFrequency: Monthly
   billingCurrency: USD
   chargeCategories:
-    - Usage
-    - Purchase
-    - Tax
-    - Credit
     - Adjustment
-  chargeFrequency: Recurring
+    - Credit
 focusColumns:
-  ServiceName: ANN Inc.
-  ServiceCategory: Developer Tools / API
-  ProviderName: ANN Inc.
-  PublisherName: ANN Inc.
-  InvoiceIssuerName: ANN Inc.
-  PricingCategory: Usage-Based
-  PricingUnit: request
+  ServiceName: Ann Taylor Affiliate Program
+  ServiceCategory: Affiliate Marketing
+  ProviderName: Ann Taylor
+  PublisherName: Ann Taylor / Sycamore Partners
+  InvoiceIssuerName: FlexOffers (or CJ Affiliate, depending on network)
   BillingCurrency: USD
-  ChargeCategory: Usage
 meters:
-  - name: api_requests
-    description: Count of billable API requests
-    unit: request
+  - name: attributed_sales
+    description: Gross sales attributed via affiliate links
+    unit: USD
     aggregation: sum
     dimensions:
-      - api
-      - endpoint
-      - tier
-      - region
-      - consumer
-  - name: data_egress
-    description: Bytes returned over the network in API responses
-    unit: GB
+      - publisher
+      - sub_id
+      - channel
+  - name: commissions_earned
+    description: Commission paid out to publisher (negative cost / revenue from FinOps view)
+    unit: USD
     aggregation: sum
     dimensions:
-      - api
-      - region
-      - consumer
-  - name: compute_seconds
-    description: Server-side compute consumed by the request, where applicable
-    unit: second
-    aggregation: sum
+      - publisher
+      - period
+  - name: clicks
+    description: Affiliate link click volume
+    unit: click
+    aggregation: count
     dimensions:
-      - api
-      - endpoint
-      - tier
-apis:
-  - name: Ann Taylor Affiliate Program
-    baseURL: https://www.anntaylor.com
-    tags:
-      - Affiliate Marketing
-      - Fashion
-      - Retail
-      - Women's Apparel
-    serviceName: Ann Taylor Affiliate Program
-    serviceCategory: API
-unitEconomics:
-  - name: Cost per 1K Requests
-    metric: billed_cost / (api_requests / 1000)
-    target: TBD
-  - name: Cost per Active Consumer
-    metric: billed_cost / active_consumers
-    target: TBD
-maintainers: []
+      - publisher
+      - link
+principles:
+  - name: Visibility
+    description: >-
+      Use the FlexOffers / CJ publisher dashboard for click, conversion, and
+      payout reporting. Ann Taylor itself does not expose publisher-level
+      telemetry.
+  - name: Allocation
+    description: >-
+      Allocate affiliate revenue and any platform fees to the marketing
+      sub-channel and content team that owns the link.
+  - name: Optimization
+    description: >-
+      Optimization levers are creative selection, deep-link strategy, and
+      catalog feed freshness; not request-rate tuning.
+  - name: Accountability
+    description: >-
+      Marketing and content teams own this revenue line; finance / FinOps
+      handles 1099 reconciliation through the network.
+maintainers:
+  - FN: API Evangelist
+    email: info@apievangelist.com
