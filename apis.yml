@@ -56,6 +56,11 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/ann.png
 access: 3rd-Party
 common:
+  - type: ParentCompany
+    url: https://apis.io/providers/ascena-retail-group/
+    name: Ascena Retail Group
+    x-relationship: acquired
+    x-evidence: "was acquired by Ascena Retail Group in 2015 and subsequently sold to Sycamore Partners in December 2020 for $540 million, alongside Lane Bryant and Lou & Grey brands."
   - type: DomainSecurity
     url: security/ann-domain-security.yml
   - type: LinkedIn
