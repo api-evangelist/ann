@@ -18,9 +18,15 @@ description: >-
   rate-limit documentation. Affiliate publishers interact with the FlexOffers
   or CJ Affiliate API surface, whose rate limits are governed by those
   networks (not by Ann Taylor).
+limit_count: 0
+verified: '2026-09-02'
 notes: >-
   Rate limits are governed by the affiliate network the publisher joins
-  (FlexOffers / CJ), not by Ann Taylor.
+  (FlexOffers / CJ), not by Ann Taylor. limit_count is an honest 0: re-checked
+  2026-09-02, ANN Inc. publishes no numeric rate limit, no burst, no RateLimit-*
+  / X-RateLimit-* / Retry-After response headers and no exhaustion status code,
+  because it publishes no first-party API. The single limits[] entry below is a
+  pointer at the network's documentation, not a published ANN Inc. limit.
 sources:
   - https://www.flexoffers.com/affiliate-programs/ann-taylor-affiliate-program/
 responseCodes: {}

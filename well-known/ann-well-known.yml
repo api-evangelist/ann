@@ -1,0 +1,209 @@
+generated: '2026-09-02'
+method: probed
+source: >-
+  direct unauthenticated HTTPS probes (browser User-Agent) of every host named in
+  apis.yml — www.anntaylor.com, www.loft.com, www.knitwellgroup.com. There is no
+  apis[].baseURL API host and no OpenAPI servers[] host, because ANN Inc. publishes
+  no machine-readable contract.
+name: ANN Inc. .well-known Probe
+description: >-
+  No .well-known document is served on any ANN Inc. host. www.knitwellgroup.com is an
+  Azure Static Web App that returns an honest hard 404 (2,400-byte "Azure Static Web
+  Apps - 404: Not found" page) for every path. www.anntaylor.com and www.loft.com are
+  Salesforce Commerce Cloud (Demandware) storefronts fronted by a bot-mitigation layer
+  that answers HTTP 200 with the SAME ~282KB / ~277KB storefront shell for EVERY path —
+  including a control path that cannot exist. Those 200s are catch-all soft-404s, not
+  documents. NO WellKnown and NO SecurityTxt pointer is emitted for this provider:
+  nothing here is a hit.
+hit_count: 0
+path_echo_control: failed
+soft_404_hosts:
+  - www.anntaylor.com
+  - www.loft.com
+soft_404_control:
+  - url: https://www.anntaylor.com/.well-known/ann-negative-control-7f3ab91c.json
+    status: 200
+    content_type: text/html;charset=UTF-8
+    bytes: 282460
+    note: >-
+      Control probe of a path that cannot exist. Returned the same storefront shell as
+      every /.well-known/* path on this host, so every 200 on www.anntaylor.com is
+      discarded. Body differs from a real path only by the base64-encoded URL echoed
+      into the Demandware PX-Show wrapper and per-request CSRF/session tokens.
+  - url: https://www.loft.com/.well-known/ann-negative-control-7f3ab91c.json
+    status: 200
+    content_type: text/html;charset=UTF-8
+    bytes: 277327
+    note: Same catch-all behaviour as www.anntaylor.com; every 200 on this host is discarded.
+  - url: https://www.knitwellgroup.com/.well-known/ann-negative-control-7f3ab91c.json
+    status: 404
+    content_type: text/html
+    bytes: 2400
+    note: Honest 404. This host's negative control passed; its 404s are trustworthy.
+hosts:
+  - host: https://www.anntaylor.com
+    catch_all: true
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        file: null
+        hit: false
+        note: catch-all storefront shell, not a document
+      - path: /.well-known/openid-configuration
+        status: 200
+        file: null
+        hit: false
+        note: catch-all storefront shell, not a document
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        file: null
+        hit: false
+        note: catch-all storefront shell, not a document
+      - path: /.well-known/oauth-protected-resource
+        status: 200
+        file: null
+        hit: false
+        note: catch-all storefront shell, not a document
+      - path: /.well-known/api-catalog
+        status: 200
+        file: null
+        hit: false
+        note: catch-all storefront shell, not a document
+      - path: /.well-known/ai-plugin.json
+        status: 200
+        file: null
+        hit: false
+        note: catch-all storefront shell, not a document
+      - path: /.well-known/aauth-resource.json
+        status: 200
+        file: null
+        hit: false
+        note: catch-all storefront shell; no issuer/jwks_uri, not an AAuth document
+      - path: /.well-known/agent-card.json
+        status: 200
+        file: null
+        hit: false
+        note: HTML body, rejected — not an AgentCard
+      - path: /.well-known/agent.json
+        status: 200
+        file: null
+        hit: false
+        note: HTML body, rejected — not an AgentCard
+      - path: /.well-known/ucp.json
+        status: 200
+        file: null
+        hit: false
+        note: catch-all storefront shell, not a document
+      - path: /.well-known/acp.json
+        status: 200
+        file: null
+        hit: false
+        note: catch-all storefront shell, not a document
+  - host: https://www.loft.com
+    catch_all: true
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        file: null
+        hit: false
+        note: catch-all storefront shell, not a document
+      - path: /.well-known/openid-configuration
+        status: 200
+        file: null
+        hit: false
+        note: catch-all storefront shell, not a document
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        file: null
+        hit: false
+        note: catch-all storefront shell, not a document
+      - path: /.well-known/oauth-protected-resource
+        status: 200
+        file: null
+        hit: false
+        note: catch-all storefront shell, not a document
+      - path: /.well-known/api-catalog
+        status: 200
+        file: null
+        hit: false
+        note: catch-all storefront shell, not a document
+      - path: /.well-known/ai-plugin.json
+        status: 200
+        file: null
+        hit: false
+        note: catch-all storefront shell, not a document
+      - path: /.well-known/aauth-resource.json
+        status: 200
+        file: null
+        hit: false
+        note: catch-all storefront shell; no issuer/jwks_uri, not an AAuth document
+      - path: /.well-known/agent-card.json
+        status: 200
+        file: null
+        hit: false
+        note: HTML body, rejected — not an AgentCard
+      - path: /.well-known/agent.json
+        status: 200
+        file: null
+        hit: false
+        note: HTML body, rejected — not an AgentCard
+      - path: /.well-known/ucp.json
+        status: 200
+        file: null
+        hit: false
+        note: catch-all storefront shell, not a document
+      - path: /.well-known/acp.json
+        status: 200
+        file: null
+        hit: false
+        note: catch-all storefront shell, not a document
+  - host: https://www.knitwellgroup.com
+    catch_all: false
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+        file: null
+        hit: false
+      - path: /.well-known/openid-configuration
+        status: 404
+        file: null
+        hit: false
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+        file: null
+        hit: false
+      - path: /.well-known/oauth-protected-resource
+        status: 404
+        file: null
+        hit: false
+      - path: /.well-known/api-catalog
+        status: 404
+        file: null
+        hit: false
+      - path: /.well-known/ai-plugin.json
+        status: 404
+        file: null
+        hit: false
+      - path: /.well-known/aauth-resource.json
+        status: 404
+        file: null
+        hit: false
+      - path: /.well-known/agent-card.json
+        status: 404
+        file: null
+        hit: false
+      - path: /.well-known/agent.json
+        status: 404
+        file: null
+        hit: false
+      - path: /.well-known/ucp.json
+        status: 404
+        file: null
+        hit: false
+      - path: /.well-known/acp.json
+        status: 404
+        file: null
+        hit: false
+maintainers:
+  - FN: API Evangelist
+    email: info@apievangelist.com

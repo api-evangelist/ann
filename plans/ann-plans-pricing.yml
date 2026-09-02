@@ -20,11 +20,18 @@ description: >-
   Affiliate). Compensation is a sales commission paid by Ann Taylor through
   the network, not a per-request API fee. There is no plan tier, free quota,
   or metered request price published by Ann Taylor itself.
+plan_count: 0
+verified: '2026-09-02'
 notes: >-
   No first-party developer API. Affiliate commission rates are not publicly
   posted by Ann Taylor; publishers see them after joining the network. If ANN
   publishes commission tiers publicly, replace this scaffold with reconciled
-  values.
+  values. plan_count is an honest 0 and is deliberately not the length of
+  plans[]: re-checked 2026-09-02, ANN Inc. publishes zero priced plans or tiers
+  of its own. The single plans[] entry describes the affiliate program as a
+  commercial surface, but every number in it (commission percentage, cookie
+  window) is withheld until a publisher is approved inside FlexOffers or CJ, so
+  nothing here is a published price.
 sources:
   - https://www.flexoffers.com/affiliate-programs/ann-taylor-affiliate-program/
   - https://www.anntaylor.com

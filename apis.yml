@@ -83,14 +83,29 @@ common:
   - url: https://www.anntaylor.com/customer-service
     name: Ann Taylor Customer Service
     type: Support
-  - url: https://www.anntaylor.com/privacy-policy
-    name: Privacy Policy
+  - url: https://www.anntaylor.com/ann-privacy/
+    name: Ann Taylor Privacy Policy
     type: PrivacyPolicy
-  - url: https://www.anntaylor.com/terms-conditions
-    name: Terms and Conditions
+    x-evidence: >-
+      Corrected 2026-09-02. The previous pointer https://www.anntaylor.com/privacy-policy
+      is not a path the site publishes — it returns the storefront's soft-404
+      ("Oh no, something went wrong!"), byte-identical to a control path that cannot
+      exist. This URL is the one the anntaylor.com footer itself links.
+  - url: https://www.anntaylor.com/terms-of-use/
+    name: Ann Taylor Terms of Use
     type: TermsOfService
+    x-evidence: >-
+      Corrected 2026-09-02. The previous pointer https://www.anntaylor.com/terms-conditions
+      is not a path the site publishes; this URL is the one the anntaylor.com footer links.
+  - url: llms/ann-llms.txt
+    name: llms.txt
+    type: LLMsTxt
+maintainers:
+  - FN: API Evangelist
+    email: info@apievangelist.com
+    url: https://apievangelist.com
 created: '2026-03-23'
-modified: '2026-04-19'
+modified: '2026-09-02'
 specificationVersion: '0.23'
 description: >-
   ANN Inc. is the former parent company of Ann Taylor and LOFT, specialty
@@ -100,3 +115,36 @@ description: >-
   The brands now operate under KnitWell Group (formerly Premium Apparel LLC),
   a Sycamore Partners holding company that also owns Talbots. Ann Taylor and
   LOFT offer affiliate programs for digital publishers.
+x-enrichment:
+  date: '2026-09-02'
+  status: minimal
+  artifacts_added: 2
+  pass: local-v1
+x-coverage:
+  state: none
+  reason: not-a-software-company
+  detail: >-
+    ANN Inc. is a women's apparel retailer (Ann Taylor, LOFT) held by KnitWell Group under
+    Sycamore Partners; its only programmable surface is an affiliate program whose link,
+    feed and reporting APIs belong to FlexOffers and CJ Affiliate, and full STEP 0b
+    contract discovery found no first-party spec — api.anntaylor.com and
+    developer.anntaylor.com do not resolve at all, while www.anntaylor.com and www.loft.com
+    are Salesforce Commerce Cloud storefronts that answer HTTP 200 with the same storefront
+    shell for every path including /openapi.json, /graphql, /llms.txt and a control path
+    that cannot exist.
+  evidence:
+    - url: https://api.anntaylor.com/openapi.json
+      status: 0
+    - url: https://developer.anntaylor.com/
+      status: 0
+    - url: https://www.anntaylor.com/openapi.json
+      status: 200
+    - url: https://www.anntaylor.com/.well-known/ann-negative-control-7f3ab91c.json
+      status: 200
+    - url: https://www.knitwellgroup.com/.well-known/api-catalog
+      status: 404
+    - url: https://www.knitwellgroup.com/openapi.json
+      status: 404
+    - url: https://www.loft.com/graphql
+      status: 200
+  checked: '2026-09-02'
