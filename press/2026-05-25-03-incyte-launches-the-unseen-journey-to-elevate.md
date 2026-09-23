@@ -1,7 +1,9 @@
 ---
 title: Incyte Launches The Unseen Journey to Elevate ...
 url: https://investor.incyte.com/news-releases/news-release-details/incyte-launches-unseen-journey-elevate-hidden-impact
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"ANN" press release artificial intelligence'
 position: 3
 source: serpapi-google

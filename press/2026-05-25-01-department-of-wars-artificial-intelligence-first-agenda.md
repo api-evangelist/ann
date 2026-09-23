@@ -1,7 +1,9 @@
 ---
 title: Department of War's Artificial Intelligence-First Agenda
 url: https://www.hklaw.com/en/insights/publications/2026/02/department-of-wars-ai-first-agenda-a-new-era-for-defense-contractors
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"ANN" press release artificial intelligence'
 position: 1
 source: serpapi-google

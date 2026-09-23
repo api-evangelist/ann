@@ -1,7 +1,9 @@
 ---
 title: How Artificial Intelligence is Powering Education with Dr. Ann ...
 url: https://www.youtube.com/watch?v=2h3LcP7IAiQ
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"ANN" press release artificial intelligence'
 position: 4
 source: serpapi-google

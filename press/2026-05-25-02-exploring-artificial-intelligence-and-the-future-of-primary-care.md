@@ -1,7 +1,9 @@
 ---
 title: Exploring Artificial Intelligence and the Future of Primary Care
 url: https://pmc.ncbi.nlm.nih.gov/articles/PMC11237194/
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"ANN" press release artificial intelligence'
 position: 2
 source: serpapi-google
