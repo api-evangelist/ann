@@ -76,3 +76,21 @@ plans:
 maintainers:
   - FN: API Evangelist
     email: info@apievangelist.com
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - metered
+  units:
+  - negotiated
+  - transaction
+  plans:
+  - name: Ann Taylor Affiliate Program
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - negotiated
+    - transaction
+    periods:
+    - per-use
