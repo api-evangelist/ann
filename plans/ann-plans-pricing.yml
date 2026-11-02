@@ -1,0 +1,96 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: ANN Inc.
+providerId: ann
+created: '2026-05-04'
+# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
+# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
+method: generated
+modified: '2026-05-05'
+reconciled: false
+tags:
+  - Affiliate Marketing
+  - Retail
+  - Fashion
+description: >-
+  ANN Inc. (Ann Taylor / LOFT, now under Sycamore Partners) does not publish a
+  first-party developer API. Its public "API" surface is the Ann Taylor
+  affiliate program operated through third-party networks (FlexOffers, CJ
+  Affiliate). Compensation is a sales commission paid by Ann Taylor through
+  the network, not a per-request API fee. There is no plan tier, free quota,
+  or metered request price published by Ann Taylor itself.
+plan_count: 0
+verified: '2026-09-02'
+notes: >-
+  No first-party developer API. Affiliate commission rates are not publicly
+  posted by Ann Taylor; publishers see them after joining the network. If ANN
+  publishes commission tiers publicly, replace this scaffold with reconciled
+  values. plan_count is an honest 0 and is deliberately not the length of
+  plans[]: re-checked 2026-09-02, ANN Inc. publishes zero priced plans or tiers
+  of its own. The single plans[] entry describes the affiliate program as a
+  commercial surface, but every number in it (commission percentage, cookie
+  window) is withheld until a publisher is approved inside FlexOffers or CJ, so
+  nothing here is a published price.
+sources:
+  - https://www.flexoffers.com/affiliate-programs/ann-taylor-affiliate-program/
+  - https://www.anntaylor.com
+plans:
+  - id: ann-affiliate-program
+    name: Ann Taylor Affiliate Program
+    type: usage-based
+    description: >-
+      Affiliate program operated via FlexOffers and CJ Affiliate. Publishers
+      earn a sales commission on completed orders attributed via affiliate
+      links. The exact commission percentage is disclosed inside the network
+      after approval and is not publicly listed.
+    entries:
+      - label: Sales Commission
+        description: Percentage of attributed sale value paid as commission via the affiliate network
+        name: sales_commission
+        type: metered
+        metric: transaction
+        limit: -1
+        timeFrame: usage
+        geo: US
+        unit: 1
+        price: 'see network (FlexOffers / CJ); not publicly disclosed'
+        userMultiplied: false
+      - label: Cookie Window
+        description: Attribution window for affiliate referrals
+        name: cookie_window
+        type: flat
+        metric: varies
+        limit: -1
+        timeFrame: usage
+        geo: US
+        unit: 1
+        price: 'see network'
+        userMultiplied: false
+    elements:
+      - name: Affiliate Link Generator (network-provided)
+      - name: Product Catalog Feed (network-provided)
+      - name: Commission Reporting (network-provided)
+      - name: FlexOffers Network Membership
+      - name: CJ Affiliate Network Membership (alternative)
+maintainers:
+  - FN: API Evangelist
+    email: info@apievangelist.com
+x-canonical:
+  generated: '2026-11-01'
+  vocabulary: engine/economics/plans-canonical.yml
+  models:
+  - metered
+  units:
+  - negotiated
+  - transaction
+  plans:
+  - name: Ann Taylor Affiliate Program
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - negotiated
+    - transaction
+    periods:
+    - per-use
